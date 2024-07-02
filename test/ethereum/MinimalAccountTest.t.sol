@@ -105,11 +105,12 @@ contract MinimalAccountTest is Test {
         // Then we create the userOperationHash that can be used to recover the signer
         bytes32 userOperationHash = IEntryPoint(helperConfig.getConfig().entryPoint).getUserOpHash(packedUserOp);
         // Patrick said to use this but it makes the test fail
-        // uint256 missingAccountFunds = 1e18;
+        uint256 missingAccountFunds = 1e18;
+
         // Act
         vm.prank(helperConfig.getConfig().entryPoint);
-        // uint256 validationData = minimalAccount.validateUserOp(packedUserOp, userOperationHash, missingAccountFunds);
-        uint256 validationData = minimalAccount.validateUserOp(packedUserOp, userOperationHash, 0);
+        uint256 validationData = minimalAccount.validateUserOp(packedUserOp, userOperationHash, missingAccountFunds);
+
         // Assert
         assertEq(validationData, 0);
     }
