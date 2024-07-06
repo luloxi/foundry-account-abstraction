@@ -10,7 +10,9 @@ import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/Messa
 contract SendPackedUserOp is Script {
     using MessageHashUtils for bytes32;
 
-    function run() public {}
+    function run() public {
+        HelperConfig helperConfig = new HelperConfig();
+    }
 
     function generateSignedUserOperation(
         bytes memory callData,
