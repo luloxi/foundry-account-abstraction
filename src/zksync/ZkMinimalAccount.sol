@@ -102,7 +102,7 @@ contract ZkMinimalAccount is IAccount, Ownable {
     // since it typically should not be trusted.
     function executeTransactionFromOutside(Transaction memory _transaction) external payable {
         // Remember to check for the return of _validateTransaction
-        bytes4 magic = _validateTransaction(_transaction);
+        bytes4 magic = _validateTransaction(_transaction); // This can be used for audit reccomendation
         if (magic != ACCOUNT_VALIDATION_SUCCESS_MAGIC) {
             revert ZkMinimalAccount__InvalidSignature();
         }
